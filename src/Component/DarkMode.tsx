@@ -28,13 +28,13 @@ const DarkMode: React.FC = () => {
     <div onClick={toggleDarkMode}>
       {isDarkMode ? (
         <Tooltip title="Toggle Light Mode" placement="top">
-          <span>
+          <span className=" text-2xl rounded-full ">
             <MdOutlineDarkMode />
           </span>
         </Tooltip>
       ) : (
         <Tooltip title="Toggle Dark Mode" placement="top">
-          <span>
+          <span className=" text-2xl rounded-full ">
             <IoSunnyOutline />
           </span>
         </Tooltip>
