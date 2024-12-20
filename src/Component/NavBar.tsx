@@ -32,7 +32,7 @@ const NavBar: React.FC<NavbarProps> = () => {
   ];
 
   return (
-    <nav className="bg-blue-600 dark:bg-blue-950 text-white shadow-md dark:blue-600 z-10 relative">
+    <nav className="bg-blue-600 dark:bg-blue-950 text-white shadow-md dark:blue-600 z-10 relative mt-0 pt-0">
       <div className="container mx-auto flex justify-between items-center px-4 py-3">
         {/* Logo */}
         <div className="text-xl font-bold">MyApp</div>
@@ -44,7 +44,7 @@ const NavBar: React.FC<NavbarProps> = () => {
 
         {/* Menu Items */}
         <ul
-          className={`md:flex md:items-center md:space-x-6 absolute md:static top-16 left-0 w-full md:w-auto bg-blue-600 md:bg-transparent z-10 transition-transform transform md:translate-x-0 ${isOpen ? "translate-x-0" : "-translate-x-full"
+          className={`md:flex md:items-center md:space-x-6 absolute md:static dark:bg-blue-950 top-16 left-0 w-full md:w-auto bg-blue-600 md:bg-transparent z-10 transition-transform transform md:translate-x-0 ${isOpen ? "translate-x-0" : "-translate-x-full"
             }`}
         >
           {menuItems.map((item, index) => (

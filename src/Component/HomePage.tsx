@@ -1,14 +1,15 @@
 import React from 'react'
 import NavBar from './NavBar'
-import Cards from './cardComponent/Cards'
+import ProductList from './cardComponent/ProductList'
+import ProductHeader from './cardComponent/ProductHeader'
 
 const HomePage = () => {
   return (
     <>
     <NavBar/>
-    <div className='text-center font-semibold text-green-600 w-full h-[100vh] bg-white dark:bg-black'>
-      <div>itS Home Page</div>
-      <Cards/>
+    <div className='text-center font-semibold text-green-600 w-full h-auto  bg-white dark:bg-black'>
+      <ProductHeader/>
+      <ProductList/>
     </div>
     </>
 

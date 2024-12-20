@@ -22,7 +22,6 @@ const DarkMode: React.FC = () => {
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
   };
-  console.log(isDarkMode);
 
   return (
     <div onClick={toggleDarkMode}>

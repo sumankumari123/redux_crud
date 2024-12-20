@@ -6,6 +6,7 @@ import { Provider } from 'react-redux'
 import { store } from "./apps/store.tsx";
 
 
+
 const container = document.getElementById('root')
 
 if (container) {
