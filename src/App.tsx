@@ -2,6 +2,8 @@ import { useState } from "react";
 import "./App.css";
 import Signup from "./Signup";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { withTranslation } from 'react-i18next';
+
 
 import Login from "./Login";
 import HomePage from "./component/HomePage";
@@ -18,4 +20,4 @@ function App() {
   );
 }
 
-export default App;
+export default withTranslation()(App);

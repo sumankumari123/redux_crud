@@ -4,8 +4,7 @@ import "./index.css";
 import App from "./App.tsx";
 import { Provider } from 'react-redux'
 import { store } from "./apps/store.tsx";
-
-
+import "./i18n";
 
 const container = document.getElementById('root')
 
@@ -14,7 +13,6 @@ if (container) {
 
   root.render(
     <StrictMode>
-
     <Provider store={store}>
       <App />
     </Provider>

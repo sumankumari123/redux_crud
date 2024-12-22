@@ -28,6 +28,7 @@ export interface CardState {
   loading: boolean,
   error: string | boolean;
   productList: Product[],
+  selectCategory: string,
 }
 
 
@@ -36,6 +37,7 @@ const initialState: CardState = {
     loading: true,
     error: false,
     productList: [],
+    selectCategory: ""
 }
 
 // Create async thunk
@@ -56,7 +58,9 @@ const CardReducer = createSlice({
   name: 'cardData',
   initialState,
   reducers: {
-   
+   updateSelectCategory: (state, action: PayloadAction<string>)=>{
+    state.selectCategory = action.payload;
+   }
   },
   
   extraReducers: (builder) => {
@@ -78,6 +82,6 @@ const CardReducer = createSlice({
 
 
 // Action creators are generated for each case reducer function
-export const {  } = CardReducer.actions
+export const { updateSelectCategory } = CardReducer.actions
 
 export default CardReducer.reducer

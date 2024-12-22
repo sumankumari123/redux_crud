@@ -3,6 +3,8 @@ import { FiMenu, FiX } from "react-icons/fi";
 import { BiWorld } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import DarkMode from "./DarkMode";
+import { Tooltip } from "@mui/material";
+import { BsCart4 } from "react-icons/bs";
 
 
 type NavbarProps = {};
@@ -73,13 +75,19 @@ const NavBar: React.FC<NavbarProps> = () => {
             </button>
           </li>
           <li className="md:my-0 my-2 flex justify-center items-center">
-            <BiWorld size={20} className="mr-2" />
-            <span>Language</span>
+            <Tooltip title="Comming soon">
+            <span className="flex"> <BiWorld size={20} className="mr-2" />
+            Select Language</span>
+            </Tooltip>
+
           </li>
 
           <li className="md:my-0 my-2 flex justify-center items-center">
           <DarkMode/>            
           </li>
+
+          <li className='md:my-0 my-2 flex justify-center items-center'><span className='mx-1'>Cart</span> <BsCart4  size={20} className='mt-1 '/> 
+</li>
         </ul>
       </div>
     </nav>
