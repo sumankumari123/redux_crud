@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import DarkMode from "./DarkMode";
 import { Tooltip } from "@mui/material";
 import { BsCart4 } from "react-icons/bs";
-
+import { LiaLanguageSolid } from "react-icons/lia";
 
 type NavbarProps = {};
 
@@ -46,8 +46,9 @@ const NavBar: React.FC<NavbarProps> = () => {
 
         {/* Menu Items */}
         <ul
-          className={`md:flex md:items-center md:space-x-6 absolute md:static dark:bg-blue-950 top-16 left-0 w-full md:w-auto bg-blue-600 md:bg-transparent z-10 transition-transform transform md:translate-x-0 ${isOpen ? "translate-x-0" : "-translate-x-full"
-            }`}
+          className={`md:flex md:items-center md:space-x-6 absolute md:static dark:bg-blue-950 top-16 left-0 w-full md:w-auto bg-blue-600 md:bg-transparent z-10 transition-transform transform md:translate-x-0 ${
+            isOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
         >
           {menuItems.map((item, index) => (
             <li key={index} className="md:my-0 my-2">
@@ -74,20 +75,23 @@ const NavBar: React.FC<NavbarProps> = () => {
               Logout
             </button>
           </li>
+
           <li className="md:my-0 my-2 flex justify-center items-center">
-            <Tooltip title="Comming soon">
-            <span className="flex"> <BiWorld size={20} className="mr-2" />
-            Select Language</span>
+            <span className="mx-1">Cart</span>{" "}
+            <BsCart4 size={20} className="mt-1 " />
+          </li>
+
+          <li className="md:my-0 my-2 flex justify-center items-center">
+            <Tooltip title="Custome language Comming soon">
+              <span>
+                <LiaLanguageSolid size={23} className="" />
+              </span>
             </Tooltip>
-
           </li>
 
           <li className="md:my-0 my-2 flex justify-center items-center">
-          <DarkMode/>            
+            <DarkMode />
           </li>
-
-          <li className='md:my-0 my-2 flex justify-center items-center'><span className='mx-1'>Cart</span> <BsCart4  size={20} className='mt-1 '/> 
-</li>
         </ul>
       </div>
     </nav>

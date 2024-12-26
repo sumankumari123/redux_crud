@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { useAppSelector, useAppDispatch } from "../../apps/hooks";
 import { fetchProducts } from "../../features/CardReducer";
+import { FaRupeeSign } from "react-icons/fa";
+import { Tooltip } from "@mui/material";
 
 const ProductList = () => {
   const { value, productList, selectCategory } = useAppSelector(
@@ -31,23 +33,34 @@ const ProductList = () => {
           return (
             <div
               className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow
-           dark:bg-gray-800 dark:border-gray-700  my-2"
+           dark:bg-gray-800 dark:border-gray-700  my-2 "
               key={index}
             >
               <img
                 src={items.image}
-                className="w-full h-[250px] object-contain"
+                className="w-full h-[250px] object-contain "
                 alt={items.title}
               />
-              <p className="text-sm text-black dark:text-green-600 font-nunito font-light">
-                {items.title}
+              {items.title.split("").length > 22 ? (
+                <Tooltip title={items.title}>
+                  <p className="text-sm text-black dark:text-green-600 font-nunito font-light">
+                    {`${items.title.split("").splice(0, 23).join("")}...`}
+                  </p>
+                </Tooltip>
+              ) : (
+                <p className="text-sm text-black dark:text-green-600 font-nunito font-light">
+                  {items.title}
+                </p>
+              )}
+
+              <p className="text-lg text-gray-800 dark:text-green-600 font-nunito font-extrabold">
+                <span className="text-black dark:text-green-600">Rs</span> {items.price}
               </p>
-              <p className="text-lg text-black dark:text-green-600 font-nunito font-bold">
-                {items.price}
-              </p>
-              <button className=" dark:bg-green-400 font-semibold
+              <button
+                className=" dark:bg-green-400 font-semibold
                text-white  bg-blue-500 hover:bg-blue-600
-              py-1 px-4  text-sm  rounded ">
+              py-1 px-4  text-sm  rounded "
+              >
                 ADD TO CART
               </button>
             </div>

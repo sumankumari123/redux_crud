@@ -1,7 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 const withMT = require("@material-tailwind/react/utils/withMT");
 
-
 export default {
   darkMode: 'class', 
     content: [
@@ -21,6 +20,19 @@ export default {
           arvo: ["Arvo", "sans-serif"],
           inter: ["Inter", "sans-serif"],
           outfit: ["Outfit", "sans-serif"],
+      },
+      fontWeight: {
+        thin: '100',
+        hairline: '100',
+        extralight: '200',
+        light: '300',
+        normal: '400',
+        medium: '500',
+        semibold: '600',
+        bold: '700',
+        extrabold: '800',
+        'extra-bold': '800',
+        black: '900',
       }
     },
 
