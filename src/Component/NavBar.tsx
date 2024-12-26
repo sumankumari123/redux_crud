@@ -6,6 +6,8 @@ import DarkMode from "./DarkMode";
 import { Tooltip } from "@mui/material";
 import { BsCart4 } from "react-icons/bs";
 import { LiaLanguageSolid } from "react-icons/lia";
+import { useAppSelector } from "../apps/hooks";
+import { Link } from "react-router-dom";
 
 type NavbarProps = {};
 
@@ -16,6 +18,7 @@ type MenuItem = {
 
 const NavBar: React.FC<NavbarProps> = () => {
   const navigate = useNavigate();
+  const { getAddToCardData } = useAppSelector((state) => state.cardData);
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -77,8 +80,20 @@ const NavBar: React.FC<NavbarProps> = () => {
           </li>
 
           <li className="md:my-0 my-2 flex justify-center items-center">
-            <span className="mx-1">Cart</span>{" "}
-            <BsCart4 size={20} className="mt-1 " />
+            <Link
+              to="/addToCard"
+              className="flex justify-center items-center cursor-pointer"
+            >
+              <span className="mx-1">Cart</span>{" "}
+              <BsCart4 size={20} className="mt-1 " />
+              {Boolean(getAddToCardData) && getAddToCardData.length > 0 ? (
+                <span className="text-red-500 text-[0.7rem] ml-[-3px] mt-[-19px] font-[600] bg-white px-[7px] py-[1px] rounded-full">
+                  {getAddToCardData.length}
+                </span>
+              ) : (
+                ""
+              )}
+            </Link>
           </li>
 
           <li className="md:my-0 my-2 flex justify-center items-center">

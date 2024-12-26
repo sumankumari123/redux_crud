@@ -7,6 +7,7 @@ import { withTranslation } from 'react-i18next';
 
 import Login from "./Login";
 import HomePage from "./component/HomePage";
+import AddToCard from "./component/cardComponent/AddToCard";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/home" element={<HomePage />} />
+        <Route path="/addToCard" element={<AddToCard/>}/>
       </Routes>
     </BrowserRouter>
   );

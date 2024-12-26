@@ -1,13 +1,17 @@
 import { useEffect } from "react";
 import { useAppSelector, useAppDispatch } from "../../apps/hooks";
-import { fetchProducts } from "../../features/CardReducer";
+import {
+  fetchProducts,
+  updateAddToCardData,
+  updateSelectCategory,
+} from "../../features/CardReducer";
 import { FaRupeeSign } from "react-icons/fa";
 import { Tooltip } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const ProductList = () => {
-  const { value, productList, selectCategory } = useAppSelector(
-    (state) => state.cardData
-  );
+  const { value, productList, selectCategory, getAddToCardData } =
+    useAppSelector((state) => state.cardData);
   const dispatch = useAppDispatch();
 
   const productListByselectedCategory = productList.filter((product) => {
@@ -17,8 +21,6 @@ const ProductList = () => {
       return product;
     }
   });
-  console.log(productListByselectedCategory);
-  console.log(selectCategory);
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -54,14 +56,22 @@ const ProductList = () => {
               )}
 
               <p className="text-lg text-gray-800 dark:text-green-600 font-nunito font-extrabold">
-                <span className="text-black dark:text-green-600">Rs</span> {items.price}
+                <span className="text-black dark:text-green-600">Rs</span>{" "}
+                {items.price}
               </p>
               <button
                 className=" dark:bg-green-400 font-semibold
                text-white  bg-blue-500 hover:bg-blue-600
               py-1 px-4  text-sm  rounded "
+                onClick={() => dispatch(updateAddToCardData(items))}
               >
-                ADD TO CART
+                {Boolean(getAddToCardData) &&
+                getAddToCardData.length > 0 &&
+                getAddToCardData.find((card) => card.id === items.id) ? (
+                  <Link to={"/addToCard"}>GO TO CARD </Link>
+                ) : (
+                  "ADD TO CART"
+                )}
               </button>
             </div>
           );
