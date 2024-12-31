@@ -7,7 +7,7 @@ const ProductHeader = () => {
   const {value,productList, selectCategory  } = useAppSelector((state) => state.cardData)
   const dispatch = useAppDispatch()
 
-
+console.log(selectCategory)
 
   let uniqueCategories  = [...new Set(productList.map((product)=>product.category))]
   uniqueCategories.splice(0 ,0,'all');
@@ -19,7 +19,7 @@ const ProductHeader = () => {
   {uniqueCategories.map((category,index)=>{
     return(
   <li key={index} className={`px-3 mx-6 mt-1 hover:border-green-500 hover:border-b-2
-  cursor-pointer   ${selectCategory === category? 'border-green-500 border-b-2':''}`}
+  cursor-pointer   ${selectCategory === category ?'border-green-500 border-b-2':''}`}
   onClick={()=>dispatch(updateSelectCategory(category))} >
     {category}
     </li>

@@ -7,8 +7,7 @@ import { TranslateText } from '../utils/Translate'
 const HomePage = () => {
   return (
     <>
-    <NavBar/>
-
+<NavBar/>
     <div className='text-center font-semibold text-green-600 w-full h-auto  bg-white dark:bg-black'>
       <ProductHeader/>
       <ProductList/>
