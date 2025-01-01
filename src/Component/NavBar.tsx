@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import { BiWorld } from "react-icons/bi";
-import { useNavigate } from "react-router-dom";
+import { useNavigate  } from "react-router-dom";
 import DarkMode from "./DarkMode";
 import { Tooltip } from "@mui/material";
 import { BsCart4 } from "react-icons/bs";
@@ -36,11 +36,12 @@ const NavBar: React.FC<NavbarProps> = () => {
     { label: "Services", href: "/services" },
   ];
 
+  
   return (
     <nav className="bg-blue-600 dark:bg-blue-950 text-white shadow-md dark:blue-600 z-10 relative mt-0 pt-0">
       <div className="container mx-auto flex justify-between items-center px-4 py-3">
         {/* Logo */}
-        <div className="text-xl font-bold">MyApp</div>
+        <div className="text-xl font-bold cursor-pointer" onClick={()=>navigate(-1)}>MyApp</div>
 
         {/* Menu Icon for Mobile */}
         <div className="md:hidden" onClick={toggleMenu}>
@@ -53,7 +54,7 @@ const NavBar: React.FC<NavbarProps> = () => {
             isOpen ? "translate-x-0" : "-translate-x-full"
           }`}
         >
-          {menuItems.map((item, index) => (
+          {/* {menuItems.map((item, index) => (
             <li key={index} className="md:my-0 my-2">
               <a
                 href={item.href}
@@ -62,7 +63,7 @@ const NavBar: React.FC<NavbarProps> = () => {
                 {item.label}
               </a>
             </li>
-          ))}
+          ))} */}
           <li className="md:my-0 my-2">
             <input
               type="text"

@@ -1,99 +1,86 @@
 import React from "react";
 import { useAppSelector, useAppDispatch } from "../../apps/hooks";
 import { Tooltip } from "@mui/material";
-import GoToCheckOut from "./GoToCheckOut";
-import NavBar from "../NavBar";
+import SummaryAboutProduct from "./SummaryAboutProduct";
 
 const AddToCard = () => {
   const { getAddToCardData } = useAppSelector((state) => state.cardData);
-  const dispatch = useAppDispatch();
   return (
     <>
-    <NavBar/>
-    <section className="grid md:grid-cols-2 gap-4  grid-cols-1 bg-white dark:bg-black">
-      <div className="grid md:grid-cols-2 gap-4  grid-cols-1">
-        {getAddToCardData.map((items, index) => {
-          return (
-            <div
-              className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow
+      <section className="grid md:grid-cols-4 gap-4  grid-cols-1 bg-white dark:bg-black">
+        <div className="grid md:grid-cols-2 gap-4  grid-cols-1 h-[70vh] overflow-y-auto no-scrollbar col-span-3">
+          {Boolean(getAddToCardData) && getAddToCardData.length > 0 ? (
+            getAddToCardData?.map((items, index) => {
+              return (
+                <div
+                  className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow
            dark:bg-gray-800 dark:border-gray-700  my-2 "
-              key={index}
-            >
-              <img
-                src={items.image}
-                className="w-full h-[250px] object-contain "
-                alt={items.title}
-              />
-              {items.title.split("").length > 22 ? (
-                <Tooltip title={items.title}>
-                  <p className="text-sm text-black dark:text-green-600 font-nunito font-light">
-                    {`${items.title.split("").splice(0, 23).join("")}...`}
+                  key={index}
+                >
+                  <img
+                    src={items.image}
+                    className="w-full h-[250px] object-contain "
+                    alt={items.title}
+                  />
+                  {items.title.split("").length > 22 ? (
+                    <Tooltip title={items.title}>
+                      <p className="text-sm text-black dark:text-green-600 font-nunito font-light">
+                        {`${items.title.split("").splice(0, 23).join("")}...`}
+                      </p>
+                    </Tooltip>
+                  ) : (
+                    <p className="text-sm text-black dark:text-green-600 font-nunito font-light">
+                      {items.title}
+                    </p>
+                  )}
+
+                  <p className="text-lg text-gray-800 dark:text-green-600 font-nunito font-extrabold">
+                    <span className="text-black dark:text-green-600">Rs</span>{" "}
+                    {items.price}
                   </p>
-                </Tooltip>
-              ) : (
-                <p className="text-sm text-black dark:text-green-600 font-nunito font-light">
-                  {items.title}
-                </p>
-              )}
 
-              <p className="text-lg text-gray-800 dark:text-green-600 font-nunito font-extrabold">
-                <span className="text-black dark:text-green-600">Rs</span>{" "}
-                {items.price}
-              </p>
-
-              <button
-                className=" dark:bg-green-400 font-semibold
+                  <button
+                    className=" dark:bg-green-400 font-semibold
                  text-white  bg-blue-500 hover:bg-blue-600
                 py-1 px-4  text-sm  rounded "
-                // onClick={() => dispatch(updateAddToCardData(items))}
-              >
-                +
-              </button>
+                    // onClick={() => dispatch(updateAddToCardData(items))}
+                  >
+                    +
+                  </button>
 
-              <button
-                className=" dark:bg-green-400 font-semibold
+                  <button
+                    className=" dark:bg-green-400 font-semibold
                  text-white  bg-blue-500 hover:bg-blue-600
                 py-1 px-4  text-sm  rounded "
-                // onClick={() => dispatch(updateAddToCardData(items))}
-              >
-                -
-              </button>
+                    // onClick={() => dispatch(updateAddToCardData(items))}
+                  >
+                    -
+                  </button>
 
-              <button
-                className="bg-red-500 font-semibold
+                  <button
+                    className="bg-red-500 font-semibold
                  text-white  hover:bg-red-600
                 py-1 px-4  text-sm  rounded "
-                // onClick={() => dispatch(updateAddToCardData(items))}
-              >
-                Remove
-              </button>
-            </div>
-          );
-        })}
-      </div>
-      <aside>
-        <GoToCheckOut />
-      </aside>
+                    // onClick={() => dispatch(updateAddToCardData(items))}
+                  >
+                    Remove
+                  </button>
+                </div>
+              );
+            })
+          ) : (
+            <>
+            <p className=" text-white text-center flex justify-center text-[34px]">There is no  product </p>
+            </>
+          )}
+        </div>
+        {Boolean(getAddToCardData) && getAddToCardData.length > 0 && 
+          <SummaryAboutProduct />
+          
+        }
 
-      <div role="status" className="max-w-sm p-4 border border-gray-200 rounded shadow animate-pulse md:p-6 dark:border-gray-700">
-    <div className="flex items-center justify-center h-48 mb-4 bg-gray-300 rounded dark:bg-gray-700">
-        <svg className="w-10 h-10 text-gray-200 dark:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 20">
-            <path d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM10.5 6a1.5 1.5 0 1 1 0 2.999A1.5 1.5 0 0 1 10.5 6Zm2.221 10.515a1 1 0 0 1-.858.485h-8a1 1 0 0 1-.9-1.43L5.6 10.039a.978.978 0 0 1 .936-.57 1 1 0 0 1 .9.632l1.181 2.981.541-1a.945.945 0 0 1 .883-.522 1 1 0 0 1 .879.529l1.832 3.438a1 1 0 0 1-.031.988Z"/>
-            <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z"/>
-        </svg>
-    </div>
-    <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
-    <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
-    <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
-    <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
-
-    <span className="sr-only">Loading...</span>
-</div>
-
-
-    </section>
+      </section>
     </>
-
   );
 };
 

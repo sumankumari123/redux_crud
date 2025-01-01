@@ -9,6 +9,7 @@ import Login from "./Login";
 import HomePage from "./component/HomePage";
 import AddToCard from "./component/cardComponent/AddToCard";
 import NavBar from "./component/NavBar";
+import AddToCardComponent from "./component/AddToCardComponent";
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/home" element={<HomePage />} />
-          <Route path="/addToCard" element={<AddToCard />} />
+          <Route path="/addToCard" element={<AddToCardComponent />} />
         </Routes>
       </BrowserRouter>
     </>
