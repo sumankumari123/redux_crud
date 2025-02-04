@@ -1,16 +1,13 @@
 import React from 'react'
 import NavBar from './NavBar'
-import ProductList from './cardComponent/ProductList'
-import ProductHeader from './cardComponent/ProductHeader'
-import { TranslateText } from '../utils/Translate'
+import ShowAllData from './ShowAllData'
 
 const HomePage = () => {
   return (
     <>
     <NavBar/>
-    <div className='text-center font-semibold text-green-600 w-full h-[95vh]  bg-white dark:bg-black'>
-      <ProductHeader/>
-      <ProductList/>
+    <div className='text-center font-semibold text-green-600 w-full h-auto  bg-white dark:bg-black'>
+      <ShowAllData/>
     </div>
 
     </>
@@ -18,4 +15,4 @@ const HomePage = () => {
   )
 }
 
-export default HomePage
+export default HomePage;

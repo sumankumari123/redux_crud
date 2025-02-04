@@ -1,102 +1,84 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 type formType = { 
-                  email: string; 
-                  password: string 
-                }
-
-const Login = () => {
-
-let navigate = useNavigate();
-const [userData, setUserData] = useState <formType>({
-  email: "",
-  password: "",
-})
-const [error, setError] = useState <string>('')
-const getInputData = (e: React.ChangeEvent<HTMLInputElement>) => {
-  setUserData({ ...userData,[e.target.name]: e.target.value });
+  email: string; 
+  password: string;
 };
 
-
-const handleSubmit = (e: React.FormEvent)=>{
-e.preventDefault();
-if(userData.email === "" ||  userData.password === "" ){
-  alert("please fill all field")
-}else{
-  const getData = JSON.parse(localStorage.getItem("user") || "[]");
-  console.log(getData)
-  console.log(userData)
-  getData.map((value:any)=>{
-     if(userData.email === value.email && userData.password === value.password ){
-      alert("Login Successfully !")
-      navigate("/home")
-
-     }else{
-        return setError("Invalid Email and Password !");
-     }
-    });
-
-  setUserData({
-    email: "",
-    password: "",
+const Login = () => {
+  let navigate = useNavigate();
+  const [userData, setUserData] = useState<formType>({
+    email: '',
+    password: '',
   });
+  const [error, setError] = useState<string>('');
 
-}
+  const getInputData = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUserData({ ...userData, [e.target.name]: e.target.value });
+  };
 
-}
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (userData.email === '' || userData.password === '') {
+      alert('Please fill all fields');
+    } else {
+      const getData = JSON.parse(localStorage.getItem('user') || '[]');
+      let isValidUser = false;
+      getData.forEach((value: any) => {
+        if (userData.email === value.email && userData.password === value.password) {
+          alert('Login Successfully!');
+          navigate('/home');
+          isValidUser = true;
+        }
+      });
+      if (!isValidUser) setError('Invalid Email and Password!');
+      setUserData({ email: '', password: '' });
+    }
+  };
 
   return (
-    <>
-    <h1 className='text-red-800 py-5 text-center'>{error}</h1>
-    <section className=" mx-auto  text-center w-full h-auto box-border">
-      <form className='m-auto w-[50%] h-[40vh] bg-slate-100 my-[10rem] 
-    shadow-sm shadow-slate-200 rounded-[6px] py-10 px-5' 
-    onSubmit={handleSubmit}
-    >
+    <div className="flex items-center justify-center h-screen bg-gradient-to-r from-blue-500 to-purple-500">
+      <div className="bg-white shadow-lg rounded-lg px-10 py-8 w-96">
+        <h1 className="text-2xl font-bold text-center mb-6">Login</h1>
+        {error && <p className="text-red-500 text-center">{error}</p>}
+        <form onSubmit={handleSubmit}>
+          <div className="mb-4">
+            <input
+              type="email"
+              name="email"
+              value={userData.email}
+              onChange={getInputData}
+              placeholder="Email"
+              className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+            />
+          </div>
+          <div className="mb-4">
+            <input
+              type="password"
+              name="password"
+              value={userData.password}
+              onChange={getInputData}
+              placeholder="Password"
+              className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+            />
+          </div>
+          <button
+            type="submit"
+            className="w-full py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-md"
+          >
+            Login
+          </button>
+          <div className="text-center mt-4">
 
-
-        <div className='py-3'>
-          <label className=' text-sx font-medium text-gray-600 pr-3 w-'>
-            Email:
-          </label>
-          <input type='email'
-           name='email' 
-           value={userData.email}
-           onChange={getInputData}
-            placeholder='name@gmail.com'
-            className=' border rounded-sm border-gray-300 px-2 py-1 text-[12px] focus:outline-none 
-    focus:ring-2 focus:ring-blue-400 w-[42%]'
-          />
-        </div>
-
-        <div className='py-3'>
-          <label className=' text-sx font-medium text-gray-600 pr-3 w-10'>
-            Password:
-          </label>
-          <input type='password' 
-          id="password"
-           name='password' 
-           value={userData.password}
-           onChange={getInputData}
-           placeholder='Enter the password'
-            className=' border rounded-sm border-gray-300 px-2 py-1 text-[12px] focus:outline-none 
-    focus:ring-2 focus:ring-blue-400 w-[42%]'
-          />
-
-        </div>
-
-        <button type='submit' 
-        // onSubmit={getSignupData}
-        className='bg-blue-500 text-sm px-4 py-1 rounded-[0.4rem]
-         text-white font-normal mt-[2rem]'>LOGIN</button>
-
-        <p>  Don’t have an account yet? <Link to="/signup">Sign Up</Link> </p>
-      </form>
-    </section>
-    </>
-  )
-}
+            <p className="mt-2">
+              Don't have an account? <Link to="/signup" className="text-blue-500 font-semibold">Sign up</Link>
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+};
 
 export default Login;
-
