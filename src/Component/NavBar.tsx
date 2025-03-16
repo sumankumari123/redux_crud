@@ -14,7 +14,7 @@ type NavbarProps = {};
 const NavBar: React.FC<NavbarProps> = () => {
   const navigate = useNavigate();
 
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>  (false);
 
   const handleLogOut = () => {
     localStorage.removeItem("user");
@@ -29,7 +29,8 @@ const NavBar: React.FC<NavbarProps> = () => {
 
   
   return (
-    <nav className="bg-blue-600 dark:bg-[#32174D] text-white shadow-md dark:blue-600 z-10 relative mt-0 pt-0">
+    <nav className="bg-blue-600 dark:bg-[#32174D]
+     text-white shadow-md dark:blue-600 z-10 relative mt-0 pt-0">
       <div className="container mx-auto flex justify-between items-center px-4 py-3">
         {/* Logo */}
         <div className="text-xl font-bold cursor-pointer" onClick={()=>navigate(-1)}>Application</div>
