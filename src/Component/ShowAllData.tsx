@@ -49,7 +49,8 @@ const ShowAllData = () => {
                       <span className=" text-sm  ">Edit</span>
                     </Tooltip>
                   </button>
-                  <button className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600">
+                  <button className="bg-red-500 text-white px-4 py-2
+                   rounded-md hover:bg-red-600">
                     <Tooltip title="Delete comming soon" placement="top">
                       <span className=" text-sm  ">Delete</span>
                     </Tooltip>
